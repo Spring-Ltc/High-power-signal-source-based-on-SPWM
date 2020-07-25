@@ -1,0 +1,9 @@
+
+
+1、IR2104驱动的自举电路：
+	自举电容的选择：
+		http://www.elecfans.com/dianzichangshi/20171106575268.html
+	自举电容的工作原理：
+		http://www.elecfans.com/dianzichangshi/20171106575240.html
+	一文看懂ir2110自举电容的选择：	
+		http://www.elecfans.com/yuanqijian/yinjiaotu/20180304642668.html
