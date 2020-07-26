@@ -697,7 +697,7 @@ I (..\FWLIB\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
-F (.\main.c)(0x5F1C3D33)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\FWLIB\inc -I ..\HARDWARE -I ..\USER-I.\RTE\_ZhangXue-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5F1CECF5)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\FWLIB\inc -I ..\HARDWARE -I ..\USER-I.\RTE\_ZhangXue-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\CORE\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
 I (C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -731,7 +731,7 @@ I (sys.h)(0x5055B57C)
 I (usart.h)(0x50513AC4)
 I (C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\ARMCC\include\string.h)(0x599EDB3C)
-I (..\HARDWARE\PwmTimer.h)(0x5F1C3C1B)
+I (..\HARDWARE\PwmTimer.h)(0x5F1CE9E6)
 I (..\HARDWARE\Encoder.h)(0x5F1417FD)
 I (..\HARDWARE\TaskTimer.h)(0x5F1418E3)
 I (..\HARDWARE\CurrentSensorADC.h)(0x5F141A1B)
@@ -798,8 +798,8 @@ I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
 I (usart.h)(0x50513AC4)
 I (C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
-F (..\HARDWARE\PwmTimer.c)(0x5F1C3EBE)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\FWLIB\inc -I ..\HARDWARE -I ..\USER-I.\RTE\_ZhangXue-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\obj\pwmtimer.o --omf_browse ..\obj\pwmtimer.crf --depend ..\obj\pwmtimer.d)
-I (..\HARDWARE\PwmTimer.h)(0x5F1C3C1B)
+F (..\HARDWARE\PwmTimer.c)(0x5F1CECF5)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\FWLIB\inc -I ..\HARDWARE -I ..\USER-I.\RTE\_ZhangXue-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\obj\pwmtimer.o --omf_browse ..\obj\pwmtimer.crf --depend ..\obj\pwmtimer.d)
+I (..\HARDWARE\PwmTimer.h)(0x5F1CE9E6)
 I (..\USER\sys.h)(0x5055B57C)
 I (..\CORE\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)

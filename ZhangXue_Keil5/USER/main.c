@@ -45,23 +45,27 @@ int main(void)
 
 //	NVIC_Configuration();    
 	SystemInit();	// 配置系统时钟为72M 	
-	delay_init();
-//	uart_init(115200);//串口1，USB连接
 	
+//	uart_init(115200);//串口1，USB连接
+		
 	//PWM_Time8Init();
 	LED_Init();
-	PWM_Time1Init();
-	//PWM_Time8Init();
+	//PWM_Init(500);
+	//PWM_Time1Init();
+	PWM_Time8Init();
+	
+	delay_init();
 	LED=1;
   while (1)
   {
-		delay_ms(1500);//delay_ms(1500);delay_ms(1500);delay_ms(1500);
+		delay_ms(500);//delay_ms(1500);delay_ms(1500);delay_ms(1500);
 //		delay_ms(1500);delay_ms(1500);delay_ms(1500);delay_ms(1500);
 //		delay_ms(1500);delay_ms(1500);delay_ms(1500);delay_ms(1500);
 		LED=!LED;
 
   }
 }
+
 
 
 
