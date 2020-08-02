@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=VCC_MAIN_OUT Pin=L1-1
+Removed Pin From Net: NetName=AGND Pin=L1-2
+Removed Pin From Net: NetName=GND Pin=L1-3
+Removed Pin From Net: NetName=VCC_MAIN_IN Pin=L1-4
+Added Component: Designator=L1(Inductor_Pin4)
+Added Pin To Net: NetName=GND Pin=L1-1
+Added Pin To Net: NetName=VCC_MAIN_IN Pin=L1-2
+Added Pin To Net: NetName=VCC_MAIN_OUT Pin=L1-3
+Added Pin To Net: NetName=AGND Pin=L1-4

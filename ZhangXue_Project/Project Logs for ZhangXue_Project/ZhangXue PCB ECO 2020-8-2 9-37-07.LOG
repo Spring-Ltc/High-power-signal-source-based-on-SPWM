@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=DRIVER2+ Pin=U14-2
+Removed Pin From Net: NetName=DRIVER2- Pin=U15-2
+Removed Pin From Net: NetName=DRIVER3+ Pin=U19-2
+Removed Pin From Net: NetName=DRIVER3- Pin=U20-2
+Added Pin To Net: NetName=DRIVER2- Pin=U14-2
+Added Pin To Net: NetName=DRIVER2+ Pin=U15-2
+Added Pin To Net: NetName=DRIVER3- Pin=U19-2
+Added Pin To Net: NetName=DRIVER3+ Pin=U20-2

@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=AGND Pin=Q15-3
+Added Pin To Net: NetName=GND Pin=Q15-3
+Added Member To Class: ClassName=ZhangXue Member=Component L1 MORNSUN

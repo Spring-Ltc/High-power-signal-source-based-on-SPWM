@@ -1,0 +1,10 @@
+Change Component Footprint: Designator=P4 Old Footprint=HT508-2P-H New Footprint=HT508-2P
+Added Member To Class: ClassName=ZhangXue Member=Component C21 106
+Added Member To Class: ClassName=ZhangXue Member=Component C22 104
+Added Member To Class: ClassName=ZhangXue Member=Component C27 106
+Added Member To Class: ClassName=ZhangXue Member=Component C28 104
+Added Member To Class: ClassName=ZhangXue Member=Component D10 SS54
+Added Member To Class: ClassName=ZhangXue Member=Component J4 Header
+Added Member To Class: ClassName=ZhangXue Member=Component Q2 S8050
+Added Member To Class: ClassName=ZhangXue Member=Component U9 AMS1117-3.3
+Added Member To Class: ClassName=ZhangXue Member=Component U12 AMS1117-3.3

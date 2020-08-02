@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=GND Pin=K2-A
+Removed Pin From Net: NetName=KEY_EN_OC1 Pin=K2-B
+Added Component: Designator=K2(SW_SMD_6.1*3.7)
+Added Component: Designator=K3(SW_SMD_6.1*3.7)
+Added Component: Designator=K4(SW_SMD_6.1*3.7)
+Added Component: Designator=K5(SW_SMD_6.1*3.7)
+Added Pin To Net: NetName=GND Pin=K2-A
+Added Pin To Net: NetName=KEY_EN_OC1 Pin=K2-B
+Added Pin To Net: NetName=GND Pin=K3-A
+Added Pin To Net: NetName=KEY_EN_OC2 Pin=K3-B
+Added Pin To Net: NetName=GND Pin=K4-A
+Added Pin To Net: NetName=KEY_EN_OC3 Pin=K4-B
+Added Pin To Net: NetName=GND Pin=K5-A
+Added Pin To Net: NetName=KEY_OC_SELECT Pin=K5-B
+Added Member To Class: ClassName=ZhangXue Member=Component K3 TS-Button_2P
+Added Member To Class: ClassName=ZhangXue Member=Component K4 TS-Button_2P
+Added Member To Class: ClassName=ZhangXue Member=Component K5 TS-Button_2P

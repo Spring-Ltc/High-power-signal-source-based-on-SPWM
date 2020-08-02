@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=COIL_1+ Pin=C30-2
+Removed Pin From Net: NetName=COIL_1+ Pin=C35-2
+Removed Pin From Net: NetName=COIL_1- Pin=P2-1
+Removed Pin From Net: NetName=COIL_1- Pin=P3-1
+Removed Pin From Net: NetName=COIL_1+ Pin=Q8-3
+Removed Pin From Net: NetName=COIL_1+ Pin=Q9-4
+Removed Pin From Net: NetName=COIL_1+ Pin=Q12-3
+Removed Pin From Net: NetName=COIL_1+ Pin=Q13-4
+Removed Pin From Net: NetName=COIL_1+ Pin=U14-6
+Removed Pin From Net: NetName=COIL_1+ Pin=U19-6
+Added Pin To Net: NetName=COIL_2+ Pin=C30-2
+Added Pin To Net: NetName=COIL_3+ Pin=C35-2
+Added Pin To Net: NetName=COIL_2- Pin=P2-1
+Added Pin To Net: NetName=COIL_3- Pin=P3-1
+Added Pin To Net: NetName=COIL_2+ Pin=Q8-3
+Added Pin To Net: NetName=COIL_2+ Pin=Q9-4
+Added Pin To Net: NetName=COIL_3+ Pin=Q12-3
+Added Pin To Net: NetName=COIL_3+ Pin=Q13-4
+Added Pin To Net: NetName=COIL_2+ Pin=U14-6
+Added Pin To Net: NetName=COIL_3+ Pin=U19-6
+Added Member To Class: ClassName=ZhangXue Member=Component K2 TS-Button_2P
