@@ -1,0 +1,27 @@
+Removed Pin From Net: NetName=AGND Pin=C25-1
+Removed Pin From Net: NetName=AGND Pin=C26-1
+Removed Pin From Net: NetName=AGND Pin=C33-1
+Removed Pin From Net: NetName=AGND Pin=C34-1
+Removed Pin From Net: NetName=AGND Pin=C40-1
+Removed Pin From Net: NetName=AGND Pin=C41-1
+Removed Pin From Net: NetName=AGND Pin=U10-4
+Removed Pin From Net: NetName=AGND Pin=U11-4
+Removed Pin From Net: NetName=AGND Pin=U14-4
+Removed Pin From Net: NetName=AGND Pin=U15-4
+Removed Pin From Net: NetName=AGND Pin=U20-4
+Removed Pin From Net: NetName=AGND Pin=U21-4
+Added Pin To Net: NetName=GND Pin=C25-1
+Added Pin To Net: NetName=GND Pin=C26-1
+Added Pin To Net: NetName=GND Pin=C33-1
+Added Pin To Net: NetName=GND Pin=C34-1
+Added Pin To Net: NetName=GND Pin=C40-1
+Added Pin To Net: NetName=GND Pin=C41-1
+Added Pin To Net: NetName=GND Pin=U10-4
+Added Pin To Net: NetName=GND Pin=U11-4
+Added Pin To Net: NetName=GND Pin=U14-4
+Added Pin To Net: NetName=GND Pin=U15-4
+Added Pin To Net: NetName=GND Pin=U20-4
+Added Pin To Net: NetName=GND Pin=U21-4
+Added Member To Class: ClassName=ZhangXue Member=Component C29 104
+Added Member To Class: ClassName=ZhangXue Member=Component R65 4.7k
+Added Member To Class: ClassName=ZhangXue Member=Component R66 4.7k

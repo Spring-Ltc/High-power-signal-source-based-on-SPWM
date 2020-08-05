@@ -1,0 +1,29 @@
+Removed Pin From Net: NetName=KEY_OC_SELECT Pin=U1-2
+Removed Pin From Net: NetName=KEY_EN_OC3 Pin=U1-10
+Removed Pin From Net: NetName=KEY_EN_OC2 Pin=U1-40
+Removed Pin From Net: NetName=KEY_EN_OC1 Pin=U1-41
+Removed Pin From Net: NetName=LED_SYSTEM Pin=U1-54
+Removed Pin From Net: NetName=EC_KEY2 Pin=U1-61
+Added Pin To Net: NetName=TEMP_SCL Pin=U1-30
+Added Pin To Net: NetName=TEMP_SDA Pin=U1-33
+Change Net Name : Old Net Name=PC0-PC5 New Net Name=PC5
+Added Pin To Net: NetName=PA8 Pin=U1-41
+Added Net: Name=PA8
+Added Pin To Net: NetName=PB8 Pin=U1-61
+Added Net: Name=PB8
+Added Pin To Net: NetName=PC0 Pin=U1-8
+Added Net: Name=PC0
+Added Pin To Net: NetName=PC1 Pin=U1-9
+Added Net: Name=PC1
+Added Pin To Net: NetName=PC2 Pin=U1-10
+Added Net: Name=PC2
+Added Pin To Net: NetName=PC9 Pin=U1-40
+Added Net: Name=PC9
+Added Pin To Net: NetName=PC11_SCL Pin=U1-52
+Added Net: Name=PC11_SCL
+Added Pin To Net: NetName=PC12_SDA Pin=U1-53
+Added Net: Name=PC12_SDA
+Added Pin To Net: NetName=PC13 Pin=U1-2
+Added Net: Name=PC13
+Added Pin To Net: NetName=PD2 Pin=U1-54
+Added Net: Name=PD2

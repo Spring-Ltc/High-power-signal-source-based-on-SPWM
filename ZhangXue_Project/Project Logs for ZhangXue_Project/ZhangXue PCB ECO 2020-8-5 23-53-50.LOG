@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=KEY_EN_OC1 Pin=U1-8
+Removed Pin From Net: NetName=KEY_EN_OC2 Pin=U1-9
+Removed Pin From Net: NetName=LED_EN_OC2 Pin=U1-30
+Removed Pin From Net: NetName=LED_EN_OC3 Pin=U1-33
+Removed Pin From Net: NetName=BUZZ Pin=U1-40
+Removed Pin From Net: NetName=FAN_PWM Pin=U1-41
+Removed Pin From Net: NetName=PC11_SCL Pin=U1-52
+Removed Pin From Net: NetName=PC12_SDA Pin=U1-53
+Added Pin To Net: NetName=LED_EN_OC3 Pin=U1-24
+Added Pin To Net: NetName=KEY_EN_OC2 Pin=U1-40
+Added Pin To Net: NetName=KEY_EN_OC1 Pin=U1-41
+Change Net Name : Old Net Name=PC11_SCL New Net Name=TEMP_SCL
+Change Net Name : Old Net Name=PC12_SDA New Net Name=TEMP_SDA
