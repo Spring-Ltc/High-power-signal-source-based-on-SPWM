@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=GND Pin=K2-A
+Removed Pin From Net: NetName=KEY_EN_OC1 Pin=K2-B
+Removed Pin From Net: NetName=GND Pin=K3-A
+Removed Pin From Net: NetName=KEY_EN_OC2 Pin=K3-B
+Removed Pin From Net: NetName=GND Pin=K4-A
+Removed Pin From Net: NetName=KEY_EN_OC3 Pin=K4-B
+Removed Pin From Net: NetName=GND Pin=K5-A
+Removed Pin From Net: NetName=KEY_OC_SELECT Pin=K5-B
+Added Component: Designator=K2(TSW DIP-6*6*6)
+Added Component: Designator=K3(TSW DIP-6*6*6)
+Added Component: Designator=K4(TSW DIP-6*6*6)
+Added Component: Designator=K5(TSW DIP-6*6*6)
+Added Pin To Net: NetName=GND Pin=K2-1
+Added Pin To Net: NetName=KEY_EN_OC1 Pin=K2-2
+Added Pin To Net: NetName=KEY_EN_OC1 Pin=K2-3
+Added Pin To Net: NetName=GND Pin=K2-4
+Added Pin To Net: NetName=GND Pin=K3-1
+Added Pin To Net: NetName=KEY_EN_OC2 Pin=K3-2
+Added Pin To Net: NetName=KEY_EN_OC2 Pin=K3-3
+Added Pin To Net: NetName=GND Pin=K3-4
+Added Pin To Net: NetName=GND Pin=K4-1
+Added Pin To Net: NetName=KEY_EN_OC3 Pin=K4-2
+Added Pin To Net: NetName=KEY_EN_OC3 Pin=K4-3
+Added Pin To Net: NetName=GND Pin=K4-4
+Added Pin To Net: NetName=GND Pin=K5-1
+Added Pin To Net: NetName=KEY_OC_SELECT Pin=K5-2
+Added Pin To Net: NetName=KEY_OC_SELECT Pin=K5-3
+Added Pin To Net: NetName=GND Pin=K5-4
+Added Member To Class: ClassName=ZhangXue Member=Component D7 LED
+Added Member To Class: ClassName=ZhangXue Member=Component D10 LED
+Added Member To Class: ClassName=ZhangXue Member=Component R24 240
+Added Member To Class: ClassName=ZhangXue Member=Component R27 240
+Added Member To Class: ClassName=ZhangXue Member=Component R31 240

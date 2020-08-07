@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=KEY_OC_SELECT Pin=U1-2
+Added Pin To Net: NetName=EC_KEY2 Pin=U1-11
+Added Pin To Net: NetName=KEY_EN_OC1 Pin=U1-51
+Added Pin To Net: NetName=KEY_EN_OC2 Pin=U1-52
+Added Pin To Net: NetName=KEY_EN_OC3 Pin=U1-53
+Added Pin To Net: NetName=EC_KEY1 Pin=U1-57

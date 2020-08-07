@@ -1,0 +1,24 @@
+Removed Pin From Net: NetName=LED_SELECT_OC1 Pin=D4-C
+Removed Pin From Net: NetName=LED_SELECT_OC2 Pin=D7-C
+Removed Pin From Net: NetName=LED_SELECT_OC3 Pin=D10-C
+Removed Pin From Net: NetName=VCC_3.3V Pin=R24-1
+Removed Pin From Net: NetName=VCC_3.3V Pin=R27-1
+Removed Pin From Net: NetName=VCC_3.3V Pin=R31-1
+Removed Member From Class: ClassName=ZhangXue Member=D4
+Removed Member From Class: ClassName=ZhangXue Member=D7
+Removed Member From Class: ClassName=ZhangXue Member=D10
+Added Component: Designator=RGB(LED_3528_RGB)
+Added Pin To Net: NetName=LED_SELECT_OC3 Pin=R24-2
+Added Pin To Net: NetName=LED_SELECT_OC2 Pin=R27-2
+Added Pin To Net: NetName=LED_SELECT_OC1 Pin=R31-1
+Added Pin To Net: NetName=VCC_3.3V Pin=RGB-4
+Added Pin To Net: NetName=NetR24_1 Pin=R24-1
+Added Pin To Net: NetName=NetR24_1 Pin=RGB-1
+Added Net: Name=NetR24_1
+Added Pin To Net: NetName=NetR27_1 Pin=R27-1
+Added Pin To Net: NetName=NetR27_1 Pin=RGB-2
+Added Net: Name=NetR27_1
+Added Pin To Net: NetName=NetR31_2 Pin=R31-2
+Added Pin To Net: NetName=NetR31_2 Pin=RGB-3
+Added Net: Name=NetR31_2
+Added Member To Class: ClassName=ZhangXue Member=Component RGB LED_RGB_3528

@@ -1,0 +1,3 @@
+Added Pin To Net: NetName=BUZZ Pin=U1-54
+Added Pin To Net: NetName=LED_SYSTEM Pin=U1-61
+Added Pin To Net: NetName=FAN_PWM Pin=U1-62
