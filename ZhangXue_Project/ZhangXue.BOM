@@ -1,0 +1,81 @@
+Bill of Material for 
+On 2020/8/8 at 17:00:39
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ 0.22Ω               RES_0603         1    R79                                               
+ 0Ω                  RES_0603         2    R58, R59                                          
+ 0Ω                  RES_0805         1    R53                                               
+ 1.1k                RES_0603         1    R84                                               
+ 1.2MΩ               RES_0603         1    R32                                               
+ 1.5uF/25V           CAP_0603         6    C23, C24, C31, C32, C38, C39                      
+ 104                 CAP_0603        16    C1, C3, C5, C6, C7, C8, C9                        
+                                           C10, C11, C17, C18, C22, C28
+                                           C29, C35, C37
+ 106                 CAP_0603         2    C21, C27                                          
+ 10k                 RES_0603        19    R2, R3, R5, R6, R9, R11, R12                      
+                                           R13, R15, R16, R18, R19, R20
+                                           R21, R23, R28, R57, R62, R63
+ 10uF/16V            CAP_0603         6    C25, C26, C33, C34, C40, C41                      
+ 12MHz               XTAL1            1    Y3                           晶振                   
+ 12pF                CAP_0603         2    C12, C14                                          
+ 13k                 RES_0603         1    R83                                               
+ 180                 RES_0603         1    R76                                               
+ 1k                  RES_0603         4    R1, R14, R54, R75                                 
+ 1N5824              DO214_SMA        1    D23                          肖特基二极管               
+ 1nF                 CAP_0603         3    C2, C4, C13                                       
+ 2.7k                RES_0603         3    R4, R8, R17                                       
+ 20                  RES_0603        12    R55, R56, R60, R61, R64, R65                      
+                                           R70, R71, R77, R78, R81, R82
+ 20pF                CAP_0603         2    C15, C16                                          
+ 220uF/25V           CAPE_SMD_F_8.4    1    C36                          贴片电解电容               
+ 22p                 CAP_0603         2    C19, C20                                          
+ 240                 RES_0603         9    R22, R24, R26, R27, R29, R30                      
+                                           R31, R45, R46
+ 2k                  RES_0603         2    R73, R80                                          
+ 32.768kHz           X3215            1    Y1                           晶振                   
+ 33uH                Inductor_CD_75    1    L3                                                
+ 33uH                Inductor_CDRH127R    1    L2                                                
+ 390                 RES_0603         6    R33, R34, R35, R36, R37, R38                      
+ 4.7k                RES_0603        17    R39, R40, R41, R42, R43, R44                      
+                                           R47, R48, R49, R50, R51, R52
+                                           R66, R67, R68, R69, R74
+ 470pF               CAP_0805         1    C42                                               
+ 470uF/25V           CAPE_SMD_G_10.6    1    C43                          贴片电解电容               
+ 470uF/35V           CAPE_SMD_G_10.6    1    C30                          贴片电解电容               
+ 5.1k                RES_0603         4    R7, R10, R25, R72                                 
+ 8MHz                OSC-SMD_L5.0-W3.2    1    Y2                           晶振                   
+ ACS712ELCTR-20A-T   SOIC-8_150MIL    3    U2, U3, U4                                        
+ AMS1117-3.3         SOT-223_3        2    U9, U12                                           
+ BUZZER              BUZZ-12*7.5      1    FM1                          蜂鸣器                  
+ CAT24C256WI-GT3     SOIC-8_150MIL    1    U13                                               
+ CH340G              SOP-16           1    U8                                                
+ DIP-Button_4P       TSW DIP-6*6*6    4    K2, K3, K4, K5               按键，直插，6*6*6          
+ EC11                SW_EC11          2    SW1, SW2                                          
+ FUSH                FUSE-L           1    F1                           保险丝                  
+ HCPL2630SD          SOP8_2_54        3    U5, U6, U7                                        
+ Header 2.54_4       Header F 2.54X4    1    J5                                                
+ Header              Header 2.54_2x2    1    J3                                                
+ Header              Header 2.54X2    1    J2                                                
+ Header              Header 2.54X4    1    J1                                                
+ Header              HX2.54-2         1    J4                                                
+ HT-2P               HT508-2P         1    P4                                                
+ HT-2P               HT508-2P-H       3    P1, P2, P3                                        
+ IR2104STRPBF        SOIC-8_150MIL    6    U10, U11, U14, U15, U20, U21 半桥驱动                 
+ IRLR7843            TO-252-2        13    Q3, Q4, Q5, Q6, Q7, Q8, Q9   MOS管                 
+                                           Q10, Q11, Q12, Q13, Q14, Q15
+ LED_RGB_3528        LED_3528_RGB     1    RGB                                               
+ LED                 LED_0603_B       7    D3, D6, D8, D9, D11, D12, D22 发光LED                
+ LM2596S-5.0/TR_C340931 TO-263_5         1    U16                                               
+ LM75AD              SOIC-8_150MIL    2    U17, U18                                          
+ MC34063             SOIC-8_150MIL    1    U19                                               
+ MORNSUN             Inductor_Pin4    1    L1                           共模电感                 
+ S8050               SOT-23-3         2    Q1, Q2                       三极管NPN               
+ SS54                DO214_SMA        1    D16                          1N5819               
+ SS54                SOD-323          8    D13, D14, D15, D17, D18, D19 1N5819               
+                                           D20, D21
+ STM32F103RCT6       LQFP_64_10X10    1    U1                                                
+ TS-Button_2P        SW_SMD_6.1*3.7    1    K1                           贴片按键 3*6*2.5         
+ USB                 USB_Micro_DIP41    1    USB1                                              
+ Youxin_TFT_LCD-2.4  Youxin_TFT_LCD-2.4    1    LCD1                                              
+ ZMM3V3              LL34             3    D1, D2, D5                                        
