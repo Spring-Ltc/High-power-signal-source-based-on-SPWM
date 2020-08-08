@@ -552,6 +552,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\CurrentSensorADC.c</FilePath>
             </File>
+            <File>
+              <FileName>CommonGPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\CommonGPIO.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

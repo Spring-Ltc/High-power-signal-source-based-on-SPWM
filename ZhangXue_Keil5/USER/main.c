@@ -11,6 +11,8 @@ MCU型号：STM32F103RCT6
 	建立新工程，大致确定MCU资源分配
 2020/07/19/18:03
 	按照初步功能需求，新建HARDWARE下各文件
+2020/08/08/22:40
+	根据确定的PCB，分配MCU资源，做相关初始化(编码开关、电流检测、LED和KEY等基本)
 *****************************************************************************************************/	
 
 #include "stm32f10x.h"
@@ -23,22 +25,12 @@ MCU型号：STM32F103RCT6
 #include "TaskTimer.h"
 #include "CurrentSensorADC.h"
 #include "LcdDisplay.h"
+#include "CommonGPIO.h"
 
 
 #define LED PAout(0)
 
-void LED_Init(void)
-{
- 
- GPIO_InitTypeDef  GPIO_InitStructure;
- RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);	 //使能PB,PE端口时钟
-	
- GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;				 //LED0-->PB.5 端口配置
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //推挽输出
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
- GPIO_Init(GPIOA, &GPIO_InitStructure);					 //根据设定参数初始化GPIOB.5
- GPIO_SetBits(GPIOA,GPIO_Pin_0);						 //PB.5 输出高
-}
+
 
 int main(void)
 {
