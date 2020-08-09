@@ -55,11 +55,19 @@
 #define LCD_SCL        	GPIO_Pin_13	//PB13连接至TFT -- CLK
 #define LCD_SDA        	GPIO_Pin_15	//PB15连接至TFT - SDI
 *******************************************************************************/
-#define LCD_CTRL   	  	GPIOB		//定义TFT数据端口
-#define LCD_RS         	GPIO_Pin_10	//PB11--->>TFT --RS/DC
-#define LCD_SCL        	GPIO_Pin_13	//PB13--->>TFT --SCL/SCK
-#define LCD_SDA        	GPIO_Pin_15	//PB15 MOSI--->>TFT --SDA/DIN
+//#define LCD_CTRL   	  	GPIOB		//定义TFT数据端口
+//#define LCD_RS         	GPIO_Pin_10	//PB11--->>TFT --RS/DC
+//#define LCD_SCL        	GPIO_Pin_13	//PB13--->>TFT --SCL/SCK
+//#define LCD_SDA        	GPIO_Pin_15	//PB15 MOSI--->>TFT --SDA/DIN
 
+
+#define LCD_CTRL   	  	GPIOB		//定义TFT数据端口
+#define LCD_LED        	GPIO_Pin_9  //PB9 连接至TFT -LED
+#define LCD_RS         	GPIO_Pin_10	//PB10连接至TFT --RS
+#define LCD_CS        	GPIO_Pin_11 //PB11 连接至TFT --CS
+#define LCD_RST     	  GPIO_Pin_12	//PB12连接至TFT --RST
+#define LCD_SCL        	GPIO_Pin_13	//PB13连接至TFT -- CLK
+#define LCD_SDA        	GPIO_Pin_15	//PB15连接至TFT - SDI
 
 //#define LCD_CS_SET(x) LCD_CTRL->ODR=(LCD_CTRL->ODR&~LCD_CS)|(x ? LCD_CS:0)
 

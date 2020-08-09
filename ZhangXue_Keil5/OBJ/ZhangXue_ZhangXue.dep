@@ -697,7 +697,7 @@ I (..\FWLIB\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
-F (.\main.c)(0x5F2F8678)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\FWLIB\inc -I ..\HARDWARE -I ..\USER-I.\RTE\_ZhangXue-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5F300BE8)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\FWLIB\inc -I ..\HARDWARE -I ..\USER-I.\RTE\_ZhangXue-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\CORE\stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
 I (C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -735,7 +735,7 @@ I (..\HARDWARE\PwmTimer.h)(0x5F1CE9E6)
 I (..\HARDWARE\Encoder.h)(0x5F1417FD)
 I (..\HARDWARE\TaskTimer.h)(0x5F1418E3)
 I (..\HARDWARE\CurrentSensorADC.h)(0x5F141A1B)
-I (..\HARDWARE\LcdDisplay.h)(0x5F2F85F7)
+I (..\HARDWARE\LcdDisplay.h)(0x5F2FEAD4)
 I (..\HARDWARE\CommonGPIO.h)(0x5F2EBCED)
 I (..\HARDWARE\I2CEquipment.h)(0x5F2F8171)
 I (..\HARDWARE\SerialPortNetwork.h)(0x5F2F7D2A)
@@ -923,7 +923,7 @@ I (..\FWLIB\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\FWLIB\inc\stm32f10x_wwdg.h)(0x4D783BB4)
 I (..\FWLIB\inc\misc.h)(0x4D783BB4)
-I (..\HARDWARE\LcdDisplay.h)(0x5F2F85F7)
+I (..\HARDWARE\LcdDisplay.h)(0x5F2FEAD4)
 I (..\USER\sys.h)(0x5055B57C)
 I (..\USER\delay.h)(0x50513B7A)
 F (..\HARDWARE\CurrentSensorADC.c)(0x5F2F7B8F)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\FWLIB\inc -I ..\HARDWARE -I ..\USER-I.\RTE\_ZhangXue-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\Keil\STM32F1xx_DFP\2.3.0\Device\Include"-I"C:\Program Files (x86)\Spring Program Files(x86)\MDK4 and MDK5\ARM\ARM\CMSIS\Include"-D__UVISION_VERSION="526" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\obj\currentsensoradc.o --omf_browse ..\obj\currentsensoradc.crf --depend ..\obj\currentsensoradc.d)
