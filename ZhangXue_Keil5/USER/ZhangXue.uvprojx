@@ -557,6 +557,16 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\CommonGPIO.c</FilePath>
             </File>
+            <File>
+              <FileName>I2CEquipment.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\I2CEquipment.c</FilePath>
+            </File>
+            <File>
+              <FileName>SerialPortNetwork.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SerialPortNetwork.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -13,6 +13,8 @@ MCU型号：STM32F103RCT6
 	按照初步功能需求，新建HARDWARE下各文件
 2020/08/08/22:40
 	根据确定的PCB，分配MCU资源，做相关初始化(编码开关、电流检测、LED和KEY等基本)
+2020/08/09/13:14
+	移植IIC相关代码、TFT液晶屏相关代码，还有待校验，各模块初始化基本全部完成
 *****************************************************************************************************/	
 
 #include "stm32f10x.h"
@@ -26,6 +28,9 @@ MCU型号：STM32F103RCT6
 #include "CurrentSensorADC.h"
 #include "LcdDisplay.h"
 #include "CommonGPIO.h"
+#include "I2CEquipment.h"
+#include "SerialPortNetwork.h"
+
 
 
 #define LED PAout(0)
@@ -38,7 +43,7 @@ int main(void)
 //	NVIC_Configuration();    
 	SystemInit();	// 配置系统时钟为72M 	
 	
-//	uart_init(115200);//串口1，USB连接
+	uart_init(115200);//串口1，USB连接
 		
 	//PWM_Time8Init();
 	LED_Init();

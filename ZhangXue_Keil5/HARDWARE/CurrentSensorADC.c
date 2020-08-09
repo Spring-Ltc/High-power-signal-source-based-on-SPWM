@@ -35,6 +35,35 @@ void CurrentADC_Init(void)
 }
 
 
+//输入端电源电压检测
+//	PC5---ADC12_IN15
+void SupplyVoltageADC_Init(void)
+{
+	GPIO_InitTypeDef				GPIO_InitStruct;
+	ADC_InitTypeDef					ADC_InitStruct;
+	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1,ENABLE);//使能ADC时钟
+	
+//RCC_ADCCLKConfig(RCC_PCLK2_Div6);   //设置ADC分频因子6 72M/6=12,ADC最大时间不能超过14M
+	
+	GPIO_InitStruct.GPIO_Mode=GPIO_Mode_AIN;//模拟输入
+	GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;
+	GPIO_InitStruct.GPIO_Pin=GPIO_Pin_5;
+	GPIO_Init(GPIOC,&GPIO_InitStruct);
+	
+	//ADC相关参数配置
+//	ADC_InitStruct.ADC_ContinuousConvMode=
+//	ADC_InitStruct.ADC_DataAlign=
+//	ADC_InitStruct.ADC_ExternalTrigConv=
+//	ADC_InitStruct.ADC_Mode=
+//	ADC_InitStruct.ADC_NbrOfChannel=
+//	ADC_InitStruct.ADC_ScanConvMode=
+	ADC_Init(ADC1,&ADC_InitStruct);
+	
+	ADC_Cmd(ADC1,ENABLE);
+}
+
 
 
 
