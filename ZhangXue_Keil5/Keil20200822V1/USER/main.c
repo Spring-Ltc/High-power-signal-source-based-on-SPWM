@@ -64,7 +64,15 @@ int main(void)
 	SPWM_TimeInit();
 	//3、historical data self-check即读取EEPROM用户配置的历史数据
 	
+	BUZZ_ON;delay_ms(300);BUZZ_OFF;
 	
+ LED_Select_OC1	= 0;	delay_ms(1000);LED_Select_OC1	= 1;
+ LED_Select_OC2		= 0;	delay_ms(1000);	LED_Select_OC2		= 1;
+ LED_Select_OC3			= 0;	delay_ms(1000); LED_Select_OC3			= 1;
+ LED_EN_OC1		= 0;	delay_ms(1000);			LED_EN_OC1		= 1;
+ LED_EN_OC2		= 0;	delay_ms(1000);		 LED_EN_OC2		= 1;	
+ LED_EN_OC3			= 0;	delay_ms(1000);		LED_EN_OC3			= 1;
+
 
 
 	printf("COM Text\r\n\r\n");
