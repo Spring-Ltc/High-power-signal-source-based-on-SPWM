@@ -12,5 +12,5 @@ void Gui_DrawFont_GBK16(u16 x, u16 y, u16 fc, u16 bc, u8 *s);
 void Gui_DrawFont_GBK24(u16 x, u16 y, u16 fc, u16 bc, u8 *s);
 void Gui_DrawFont_Num32(u16 x, u16 y, u16 fc, u16 bc, u16 num) ;
 
-
+void Gui_DrawNum_GBK16(u16 x, u16 y, u16 fc, u16 bc, u16 num);
 

@@ -7,7 +7,7 @@ extern u8 Flag_TaskTemp;
 extern u8 Flag_TaskPower;
 extern u8 Flag_TaskCurrent;
 extern u8 Flag_TaskReadEncode;
-
+extern u8 Flag_TaskDisplayUpdate;
 
 void TaskTime_Init(void);
 

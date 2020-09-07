@@ -36,11 +36,15 @@
 #define BUZZ_ON						BUZZ=1
 #define BUZZ_OFF					BUZZ=0
 
-
+//风扇宏定义
+#define FAN 							PBout(9)
+#define FAN_ON						FAN=1
+#define FAN_OFF					FAN=0
 
 void KEY_Init(void);
 void LED_Init(void);
 void BUZZ_Init(void);
+void FANControl_Init(void);
 u8 KEY_Scan(u8 mode);  	//按键扫描函数	
 
 

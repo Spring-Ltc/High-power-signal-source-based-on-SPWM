@@ -17,10 +17,11 @@ u8 Flag_TaskTemp=0;
 u8 Flag_TaskPower=0;
 u8 Flag_TaskCurrent=0;
 u8 Flag_TaskReadEncode=0;
+u8 Flag_TaskDisplayUpdate=0;
 
 u8 Count_TaskTemp=0;
 u8 Count_TaskPower=0;
-
+u8 Count_TaskDisplay=0;
 
 
 
@@ -74,9 +75,15 @@ void TIM1_UP_IRQHandler(void)
 		Count_TaskPower++;
 		if(Count_TaskPower >= 200)//1000ms检测一次电源电压
 		{
-			LED_System =!LED_System;
 			Flag_TaskPower = 1;
 			Count_TaskPower = 0;
+		}
+		
+		Count_TaskDisplay++;
+		if(Count_TaskPower >= 40)//200ms更新一次显示
+		{
+//			Flag_TaskDisplayUpdate = 1;	//一直更新占用时间，改为按键和编码开关操作置位
+			Count_TaskDisplay = 0;
 		}
 
 	}

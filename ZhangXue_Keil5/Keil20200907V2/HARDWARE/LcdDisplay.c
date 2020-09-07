@@ -1,7 +1,7 @@
 
 #include "LcdDisplay.h"
 #include "delay.h"
-
+#include "GUI.h"
 
 /***************************************************************************************
 STM32测试平台介绍:
@@ -47,6 +47,31 @@ MCU ：STM32_F103_RBT6
 void LcdDisplay_Init(void)
 {
 	Lcd_Init();
+	
+	Lcd_Clear(BLACK);
+	Gui_DrawFont_GBK16(50,235,BLUE,WHITE, "Magnetic field generator V1.0");
+	
+	//目录指示，参数项
+	Gui_DrawFont_GBK16(80,200,BLACK,RED," OC1 ");
+	Gui_DrawFont_GBK16(140,200,BLUE,WHITE,"OC2");
+	Gui_DrawFont_GBK16(200,200,BLUE,WHITE,"OC3");
+	Gui_DrawFont_GBK16(280,200,BLUE,GRAY0,"Step");
+	
+	//当前幅频参数栏
+	Gui_DrawFont_GBK16(0,180,BLUE,GRAY0," Freq(Hz):");
+	Gui_DrawFont_GBK16(0,160,BLUE,GRAY0," Ampl(%) :");
+	Gui_DrawFont_GBK16(0,140,BLUE,GRAY0," Curr(A) :");//显示电流
+	
+	//当前步进值显示
+	Gui_DrawFont_GBK16(280,180,BLUE,GRAY0,"100");
+	Gui_DrawFont_GBK16(280,160,BLUE,GRAY0,"20");
+	
+	//输出状态显示
+	Gui_DrawFont_GBK16(80,110,BLUE,GRAY0,"close ");
+	Gui_DrawFont_GBK16(140,110,BLUE,GRAY0,"close ");
+	Gui_DrawFont_GBK16(200,110,BLUE,GRAY0,"close ");
+	
+	
 	
 }
 

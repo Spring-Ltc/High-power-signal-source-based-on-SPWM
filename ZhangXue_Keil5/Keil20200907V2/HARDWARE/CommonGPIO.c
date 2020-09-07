@@ -123,5 +123,17 @@ void BUZZ_Init(void)
 	GPIO_ResetBits(GPIOD,GPIO_Pin_2);//初始电平拉低，关闭蜂鸣器
 }
 
+//风扇控制初始化
+void FANControl_Init(void)
+{
+	GPIO_InitTypeDef 	GPIO_InitStruct;
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
+	GPIO_InitStruct.GPIO_Mode=GPIO_Mode_Out_PP;//推挽输出
+	GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;	
+	GPIO_InitStruct.GPIO_Pin=GPIO_Pin_9;		//BUZZ
+	GPIO_Init(GPIOB,&GPIO_InitStruct);
+	GPIO_ResetBits(GPIOB,GPIO_Pin_9);//初始电平拉低，关闭风扇
+}
+
 
 

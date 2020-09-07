@@ -227,6 +227,7 @@ void Gui_DrawFont_GBK16(u16 x, u16 y, u16 fc, u16 bc, u8 *s)
 	unsigned char i,j;
 	unsigned short k,x0;
 	x0=x;
+	y = 240-y;
 
 	while(*s) 
 	{	
@@ -378,4 +379,20 @@ void Gui_DrawFont_Num32(u16 x, u16 y, u16 fc, u16 bc, u16 num)
 	}
 }
 
+
+
+
+//////////////////////////自定义，待测试
+void Gui_DrawNum_GBK16(u16 x, u16 y, u16 fc, u16 bc, u16 num)
+{
+	u8 i;
+	u8 str[6]={0};//转换成字符串的结果
+	str[5]='\0';
+	for(i=0;i<5;i++)
+	{
+		str[4-i]= num%10;
+		num /=10;
+	}
+	Gui_DrawFont_GBK16(x,y,fc,bc,str);
+}
 

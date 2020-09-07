@@ -8,7 +8,7 @@
 #define KEY_Encod2				PCin(3)
 
 
-#define EncodeMaxChange  100
+#define EncodeMaxChange  20
 
 void EC11Encoder_Init(void);
 

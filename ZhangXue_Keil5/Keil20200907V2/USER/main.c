@@ -65,10 +65,20 @@ MCU型号：STM32F103RCT6
 	宽度参数设置现象：27/正常；18/电压拉低，屏幕不亮，但没有断电；9/周期性断电
 2020/09/07/10:29
 	所有基本功能测试通过，准备写SPWM方法生成正弦波，突然发现互补PWM方案多个周期没办法积分，一度陷入崩溃.............
-
-
-
-
+2020/09/07/14:30
+	TIM8的互补通道，刚好可以用TIM3的通道替换，采用两个定时器6个通道完成SPWM输出，ST的IC引脚复用设计救我一命
+	设置定时器TIM8和TIM3的基准频率为600kHz,10个基准信号周期为一个SPWM点，每个SPWM周期设置至少2*20个采样点
+	故输出正弦波MaxFreq=1.5kHz，设置定时器TIM6定时约16.6us(60kHz)更新一次占空比
+2020/09/07/16:33
+	写SPWM程序时发现新问题，三个通道共用一个TIM6定时器改占空比的话，一个状态机不能独立调节
+2020/09/07/19:32
+	SPWM相关函数完成，单通道测试好像没有输出，但是打印采样点的占空比显示正确
+2020/09/07/21:22
+	先把控制显示部分写了再来看定时器输出，液晶更新显示由原来的定时触发改为按键和编码开关操作触发
+	液晶屏显示布局基本确定，但根据实际参数还要做适当的位置调整；移植例程没有数字显示，需要自己做字符转换
+2020/09/07/22:14
+	数字显示部分完成，但是测试暂未通过
+	
 *****************************************************************************************************/	
 
 #include "stm32f10x.h"
@@ -94,9 +104,13 @@ u16 LastcountFreq=0;
 u16 NowcountAmpl=0;//上次编码开关计数值
 u16 LastcountAmpl=0;
 u8 SelectCount=0;
-u8 NowSelect;//当前选中的通道
-u16 StepFreq=5;//调节频率步进值
-u16 StepAmpl=5;//调节幅值步进值
+u8 NowSelect=1;//当前选中的通道
+u16 StepFreq=1;//调节频率步进值
+u16 StepAmpl=1;//调节幅值步进值
+
+//三个通道的当前输出
+u8 NowAmplOut[3]={99,99,99};
+u16 NowFreqOut[3]={500,500,500};
 
 
 
@@ -105,7 +119,7 @@ void TaskEncodeUpdate_Freq(u16 nowcount);
 void TaskEncodeUpdate_Ampl(u16 nowcount);
 void TaskKeyScan(u8 key);
 void TaskSwitchSelectSwitch(u8 select);
-
+void TaskDisplayUpdate(void);
 
 int main(void)
 {
@@ -120,23 +134,30 @@ int main(void)
 	uart_init(9600);	 //串口初始化为9600
 		
 	//2、user equipment config
-	PWM_Time8Init();//互补输出PWM定时器初始化													【测试通过，但发现互补PWM不能产生SPWM】
+//	PWM_BaseTimeInit();
+//	PWM_Time8Init();//互补输出PWM定时器初始化													【测试通过，但发现互补PWM不能产生SPWM】
 	EC11Encoder_Init();//EC11编码开关定时器初始化											【测试通过】
 	TaskTime_Init();//系统任务时间片分配															【测试通过】
 	LcdDisplay_Init();//液晶显示初始化																【测试通过】
 	CurrentADC_Init();//负载电流检测ADC初始化													【测试通过】
 	SupplyVoltageADC_Init();//输入供电电压检测ADC初始化								【测试通过】
-	KEY_Init();LED_Init();BUZZ_Init();//基本按键、LED、蜂鸣器初始化		【测试通过】
+	KEY_Init();LED_Init();BUZZ_Init();FANControl_Init();//基本按键、LED、蜂鸣器初始化		【测试通过】
 	StorageI2C_Init();//EEPROM存储IIC初始化														【测试通过】
 //	TemperatureI2C_Init();//LM75AD温度传感器IIC初始化
 //	MyUsart2_Init(9600);//无线网络通信串口初始化（可选）
-//	SPWM_TimeInit();
+	
+	SPWM_TimeInit();
+	UpdateSinTable(NowSelect,NowFreqOut[NowSelect-1],NowAmplOut[NowSelect-1]);
 	//3、historical data self-check即读取EEPROM用户配置的历史数据
 
 	LED_System=1;
-	Lcd_Clear(RED);
-	Gui_DrawFont_GBK16(0,224,BLUE,RED, "全程技术支持");
+
 	//Gui_DrawFont_Num32(0,0,BLUE,RED, 1234);
+	Gui_DrawNum_GBK16(200,20,BLUE,YELLOW,1234);
+	Gui_DrawNum_GBK16(200,50,BLUE,YELLOW,NowFreqOut[1]);
+	
+	TaskDisplayUpdate();//先显示默认参数
+	
   while (1)
   {
 		//按键部分
@@ -144,7 +165,7 @@ int main(void)
 //		if( KeyValue)//有按键按下
 //			TaskKeyScan(KeyValue);
 
-		
+		LED_System =!LED_System;
 		delay_ms(500);
 
 //		Current = ReadCurrent(1);
@@ -152,11 +173,16 @@ int main(void)
 		
 		
 		
-		if(Flag_TaskPower)//读取电源电压
+		if(Flag_TaskPower)//读取电源电压，若电压被拉低，关闭输出保护电路
 		{
 			Flag_TaskPower = 0;
+			FAN = !FAN;
 			PowerVoltage = ReadPowerVoltage();
 			printf("Power Voltage is: %d  mV\r\n\r\n",PowerVoltage);
+			if(PowerVoltage <7)
+			{
+				printf("\t*****************\t Error :Power Fault!\t*************\r\n");
+			}
 		}
 		
 		if(Flag_TaskTemp)//检测PCB温度
@@ -173,6 +199,12 @@ int main(void)
 			NowcountAmpl = TIM_GetCounter(TIM2);
 			if(NowcountAmpl != LastcountAmpl)
 				TaskEncodeUpdate_Ampl(NowcountAmpl);
+		}
+		
+		if(Flag_TaskDisplayUpdate)//更新液晶显示
+		{
+			Flag_TaskDisplayUpdate = 0;
+			TaskDisplayUpdate();
 		}
   }
 }
@@ -233,18 +265,21 @@ void TaskEncodeUpdate_Freq(u16 nowcount)
 		ValueChanged = (LastcountFreq - nowcount)/2;
 		LastcountFreq = nowcount;//更新历史变量
 		if(ValueChanged>EncodeMaxChange) return;//一定时间内改变量太大，判断为计数器溢出，忽略本次操作
-		//【设置PWM计数器相关】
-		printf("Freq disces %d\r\n",ValueChanged*StepFreq);
+		NowFreqOut[NowSelect-1] -= ValueChanged*StepFreq;
+		if(NowFreqOut[NowSelect-1] <100)NowFreqOut[NowSelect-1]=100;//往下限幅
+		else if(NowFreqOut[NowSelect-1] >1500)NowFreqOut[NowSelect-1]=100;//数据往下溢出
 	}
 	else//频率增大
 	{
 		ValueChanged = (nowcount - LastcountFreq)/2;
 		LastcountFreq = nowcount;//更新历史变量
 		if(ValueChanged>EncodeMaxChange) return;//一定时间内改变量太大，判断为计数器溢出，忽略本次操作
-		//【设置PWM计数器相关】
-		printf("Freq incres %d\r\n",ValueChanged*StepFreq);
+		NowFreqOut[NowSelect-1] += ValueChanged*StepFreq;
+		if(NowFreqOut[NowSelect-1] >1500)NowFreqOut[NowSelect-1]=1500;//往上限幅
 	}
 	
+	UpdateSinTable(NowSelect,NowFreqOut[NowSelect-1],NowAmplOut[NowSelect-1]);//【设置PWM计数器相关】
+	printf("Freq is %d ;Ampl is %d\r\n",NowFreqOut[NowSelect-1],NowAmplOut[NowSelect-1]);//输出看一下呢
 }
 //幅值改变任务函数
 void TaskEncodeUpdate_Ampl(u16 nowcount)
@@ -255,17 +290,22 @@ void TaskEncodeUpdate_Ampl(u16 nowcount)
 		ValueChanged = (LastcountAmpl - nowcount)/2;
 		LastcountAmpl = nowcount;//更新历史变量
 		if(ValueChanged>EncodeMaxChange) return;//一定时间内改变量太大，判断为计数器溢出，忽略本次操作
-		//【设置PWM计数器相关】
-		printf("Ampl dicrese %d\r\n",ValueChanged*StepAmpl);
+		
+		NowAmplOut[NowSelect-1] -= ValueChanged*StepAmpl;
+		if(NowAmplOut[NowSelect-1] <11)NowAmplOut[NowSelect-1]=11;//往下限幅
+		else if(NowAmplOut[NowSelect-1] >99)NowAmplOut[NowSelect-1]=11;//数据往下溢出
 	}
 	else//幅值增大
 	{
 		ValueChanged = (nowcount - LastcountAmpl)/2;
 		LastcountAmpl = nowcount;//更新历史变量
 		if(ValueChanged>EncodeMaxChange) return;//一定时间内改变量太大，判断为计数器溢出，忽略本次操作
-		//【设置PWM计数器相关】
-		printf("Ampl increse %d\r\n",ValueChanged*StepAmpl);
+		NowAmplOut[NowSelect-1] += ValueChanged*StepAmpl;	
+		if(NowAmplOut[NowSelect-1] >99)NowAmplOut[NowSelect-1]=99;//往上限幅
 	}
+	//【因为调节的时候总是向下溢出，故把上界判断放到外面】
+	UpdateSinTable(NowSelect,NowFreqOut[NowSelect-1],NowAmplOut[NowSelect-1]);//【设置PWM计数器相关】
+	printf("Freq is %d ;Ampl is %d\r\n",NowFreqOut[NowSelect-1],NowAmplOut[NowSelect-1]);//输出看一下呢
 }
 
 
@@ -283,9 +323,12 @@ void EXTI15_10_IRQHandler(void)
 	if(KEY_EN_OC1 == 0)//按键并按下
 	{
 		LED_EN_OC1 = !LED_EN_OC1;
-		printf("KEY1\r\n");
-		TIM_CtrlPWMOutputs(TIM8, ENABLE);//使能PWM外围输
-		printf("Enable Output\r\n");
+//		printf("KEY1\r\n");
+		if(LED_EN_OC1 == 1)//灯灭关闭输出
+			OC1OutputEnable = 0;
+		else //灯亮开启输出
+			OC1OutputEnable = 1;
+		Flag_TaskDisplayUpdate=1;
 		while(!KEY_EN_OC1);//松手检测
 		EXTI_ClearITPendingBit(EXTI_Line10);	//清除中断标志位
 		return;
@@ -295,9 +338,12 @@ void EXTI15_10_IRQHandler(void)
 	else if(KEY_EN_OC2 == 0)//按键并按下
 	{
 		LED_EN_OC2 = !LED_EN_OC2;
-		printf("KEY2\r\n");
-		TIM_CtrlPWMOutputs(TIM8, DISABLE);//使能PWM外围输
-		printf("Disable Output\r\n");
+//		printf("KEY2\r\n");
+		if(LED_EN_OC2 == 1)//灯灭关闭输出
+			OC2OutputEnable = 0;
+		else //灯亮开启输出
+			OC2OutputEnable = 1;
+		Flag_TaskDisplayUpdate=1;
 		while(!KEY_EN_OC2);//松手检测
 		EXTI_ClearITPendingBit(EXTI_Line11);	//清除中断标志位
 		return;
@@ -307,7 +353,12 @@ void EXTI15_10_IRQHandler(void)
 	else if(KEY_EN_OC3 == 0)//按键并按下
 	{
 		LED_EN_OC3 = !LED_EN_OC3;
-		printf("KEY3\r\n");
+//		printf("KEY3\r\n");
+		if(LED_EN_OC3 == 1)//灯灭关闭输出
+			OC3OutputEnable = 0;
+		else //灯亮开启输出
+			OC3OutputEnable = 1;
+		Flag_TaskDisplayUpdate=1;
 		while(!KEY_EN_OC3);//松手检测
 		EXTI_ClearITPendingBit(EXTI_Line12);	//清除中断标志位
 		return;
@@ -319,15 +370,16 @@ void EXTI15_10_IRQHandler(void)
 		SelectCount++;
 		NowSelect = SelectCount%3+1;
 		TaskSwitchSelectSwitch(NowSelect);
-		printf("KEY4\r\n");
+		Flag_TaskDisplayUpdate=1;
+//		printf("KEY4\r\n");
 		while(!KEY_OC_Switch);//松手检测
 		EXTI_ClearITPendingBit(EXTI_Line13);	//清除中断标志位
 		return;
 	}
-	printf("KEY BUTTON\r\n");
+//	printf("KEY BUTTON\r\n");
 	EXTI_ClearITPendingBit(EXTI_Line10|EXTI_Line11|EXTI_Line12|EXTI_Line13);	//清除中断标志位
 }
-
+//
 
 //编码开关按键中断服务函数改变频率调节的步进值
 void EXTI9_5_IRQHandler(void)
@@ -340,15 +392,16 @@ void EXTI9_5_IRQHandler(void)
 		switch (stepfreqcount%3+1)
 		{
 			case 1:
-				StepFreq = 10;break;
+				StepFreq = 1;break;
 			case 2:
-				StepFreq = 100;break;
+				StepFreq = 10;break;
 			case 3:
-				StepFreq = 1000;break;
+				StepFreq = 50;break;
 		}
 	}
 	EXTI_ClearITPendingBit(EXTI_Line5);	//清除中断标志位
 }
+//
 
 //编码开关按键中断服务函数改变幅值调节的步进值
 void EXTI3_IRQHandler(void)
@@ -362,17 +415,46 @@ void EXTI3_IRQHandler(void)
 		switch (stepamplcount%3+1)
 		{
 			case 1:
-				StepAmpl = 10;break;
+				StepAmpl = 1;break;
 			case 2:
-				StepAmpl = 100;break;
+				StepAmpl = 5;break;
 			case 3:
-				StepAmpl = 1000;break;
+				StepAmpl = 10;break;
 		}
 	}
 	EXTI_ClearITPendingBit(EXTI_Line3);	//清除中断标志位
 }
+///
 
-
-
+//液晶屏更新显示任务
+void TaskDisplayUpdate(void)
+{
+	//通道选中背景高亮指示
+	Gui_DrawFont_GBK16(80,200,BLUE,WHITE," OC1 ");//先恢复默认颜色
+	Gui_DrawFont_GBK16(140,200,BLUE,WHITE," OC2 ");
+	Gui_DrawFont_GBK16(200,200,BLUE,WHITE," OC3 ");
+	if(NowSelect == 1)
+	{
+		Gui_DrawFont_GBK16(80,200,BLACK,RED," OC1 ");
+	}
+	else if(NowSelect == 2)
+	{
+		Gui_DrawFont_GBK16(140,200,BLACK,GREEN," OC2 ");
+	}
+	else if(NowSelect == 3)
+	{
+		Gui_DrawFont_GBK16(200,200,BLACK,BLUE," OC3 ");
+	}
+	
+	//使能指示
+	if(!OC1OutputEnable) Gui_DrawFont_GBK16(80,110,BLUE,GRAY0,"close ");
+	else Gui_DrawFont_GBK16(80,110,BLUE,YELLOW," Open ");
+	if(!OC2OutputEnable) Gui_DrawFont_GBK16(140,110,BLUE,GRAY0,"close ");
+	else Gui_DrawFont_GBK16(140,110,BLUE,YELLOW," Open ");
+	if(!OC3OutputEnable) Gui_DrawFont_GBK16(200,110,BLUE,GRAY0,"close ");
+	else Gui_DrawFont_GBK16(200,110,BLUE,YELLOW," Open ");
+	
+	Gui_DrawNum_GBK16(200,50,BLUE,YELLOW,NowFreqOut[1]);
+}
 
 
